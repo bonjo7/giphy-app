@@ -1,3 +1,4 @@
+import React from "react";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import UseRoutes from "../../Hooks/RoutesHook";
 import { MagnifyingGlass } from "phosphor-react";

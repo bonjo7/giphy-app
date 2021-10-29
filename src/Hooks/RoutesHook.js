@@ -16,7 +16,6 @@ const UseRoutes = () => {
         .then((res) => {
           setGifs(res.data.data);
           setLoading(false);
-          console.log(gifs);
         });
     } catch (error) {
       console.log("Error getting gifs - ", error);
@@ -31,7 +30,6 @@ const UseRoutes = () => {
           `${baseURL}search?api_key=${API_KEY}&q=${searchItem.giphyName}&rating=g&lang=en`
         )
         .then((res) => {
-          console.log(res);
           setGifs(res.data.data);
           setLoading(false);
         });
