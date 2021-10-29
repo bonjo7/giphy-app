@@ -4,4 +4,10 @@
 
 .card {
   margin-top: 15px;
+  background-color: #777777 !important;
+}
+
+.cardText {
+  color: #fff;
+  font-weight: bold;
 }

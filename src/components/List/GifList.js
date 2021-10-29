@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
 import UseRoutes from "../../Hooks/RoutesHook";
 import styles from "./Giflist.module.css";
+import SearchBox from "../SearchBox/SearchBox";
 import Spinner from "../Spinner/Spinner";
 
 const GifList = () => {
@@ -17,6 +18,7 @@ const GifList = () => {
         <Spinner />
       ) : (
         <Container>
+          <SearchBox />
           <Row>
             {gifs?.map((gif, key) => {
               return (
@@ -28,7 +30,9 @@ const GifList = () => {
                       src={gif.images.original.url}
                     />
                     <Card.Body>
-                      <Card.Text>{gif.title.split("by")[0]}</Card.Text>
+                      <Card.Text className={styles.cardText}>
+                        {gif.title.split("by")[0]}
+                      </Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
