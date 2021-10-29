@@ -3,7 +3,7 @@ import axios from "axios";
 
 const UseRoutes = () => {
   const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
-  const baseURL = `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&rating=g`;
+  const baseURL = `https://api.giphy.com/v1/gifs/`;
   const [loading, setLoading] = useState(false);
   const [gifs, setGifs] = useState([]);
   const [searchItem, setSearchItem] = useState(false);
@@ -11,10 +11,13 @@ const UseRoutes = () => {
   const getGifsData = async () => {
     setLoading(true);
     try {
-      await axios.get(`${baseURL}`).then((res) => {
-        setGifs(res.data.data);
-        setLoading(false);
-      });
+      await axios
+        .get(`${baseURL}trending?api_key=${API_KEY}&rating=g`)
+        .then((res) => {
+          setGifs(res.data.data);
+          setLoading(false);
+          console.log(gifs);
+        });
     } catch (error) {
       console.log("Error getting gifs - ", error);
     }
@@ -25,11 +28,11 @@ const UseRoutes = () => {
     try {
       await axios
         .get(
-          `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${searchItem}&limit=25&offset=0&rating=g&lang=en`
+          `${baseURL}search?api_key=${API_KEY}&q=${searchItem.giphyName}&rating=g&lang=en`
         )
         .then((res) => {
+          console.log(res);
           setGifs(res.data.data);
-          console.log(gifs);
           setLoading(false);
         });
     } catch (error) {
