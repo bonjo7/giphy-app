@@ -37,6 +37,7 @@ const SearchBox = () => {
         <div style={{ marginTop: "15px" }}>
           <InputGroup className='mb-3'>
             <FormControl
+              autoFocus
               className={error ? styles.error : ""}
               name='giphyName'
               type='text'
@@ -44,9 +45,11 @@ const SearchBox = () => {
               aria-label='Giphy name'
               ref={ref}
               onChange={(e) => onChange(e)}
+              onKeyDown={(e) => e.key === 'Enter' ? searchGifs(searchItem) : ""}
             />
             {searchItem ? (
               <Button
+                id="clearSearch"
                 className={styles.clearSearch}
                 variant='flat'
                 onClick={() => clearSearch()}
@@ -58,6 +61,7 @@ const SearchBox = () => {
             )}
 
             <Button
+            id="searchButton"
               className={styles.button}
               variant='flat'
               onClick={() => searchGifs(searchItem)}
