@@ -1,24 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
-import UseRoutes from "../../Hooks/RoutesHook";
+
 import styles from "./Giflist.module.css";
-import SearchBox from "../SearchBox/SearchBox";
 import Spinner from "../Spinner/Spinner";
 
-const GifList = () => {
-  const { loading, gifs, getGifsData } = UseRoutes();
-
-  useEffect(() => {
-    getGifsData();
-  }, []);
-
+const GifList = ({ gifs, loading }) => {
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
         <Container>
-          <SearchBox />
           <Row>
             {gifs?.map((gif, key) => {
               return (

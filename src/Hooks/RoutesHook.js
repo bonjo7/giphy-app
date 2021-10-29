@@ -7,14 +7,17 @@ const UseRoutes = () => {
   const [loading, setLoading] = useState(false);
   const [gifs, setGifs] = useState([]);
   const [searchItem, setSearchItem] = useState(false);
+  const [error, setError] = useState(null);
 
   const getGifsData = async () => {
+    setError(false)
     setLoading(true);
     try {
       await axios
         .get(`${baseURL}trending?api_key=${API_KEY}&rating=g`)
         .then((res) => {
           setGifs(res.data.data);
+          setSearchItem();
           setLoading(false);
         });
     } catch (error) {
@@ -23,18 +26,23 @@ const UseRoutes = () => {
   };
 
   const searchGifs = async (searchItem) => {
-    setLoading(true);
-    try {
-      await axios
-        .get(
-          `${baseURL}search?api_key=${API_KEY}&q=${searchItem.giphyName}&rating=g&lang=en`
-        )
-        .then((res) => {
-          setGifs(res.data.data);
-          setLoading(false);
-        });
-    } catch (error) {
-      console.log("Error getting gifs - ", error);
+    if (searchItem !== undefined) {
+      setError(false)
+      setLoading(true);
+      try {
+        await axios
+          .get(
+            `${baseURL}search?api_key=${API_KEY}&q=${searchItem.giphyName}&rating=g&lang=en`
+          )
+          .then((res) => {
+            setGifs(res.data.data);
+            setLoading(false);
+          });
+      } catch (error) {
+        console.log("Error getting gifs - ", error);
+      }
+    }else{
+      setError(true)
     }
   };
 
@@ -46,6 +54,7 @@ const UseRoutes = () => {
     searchGifs,
     searchItem,
     setSearchItem,
+    error
   };
 };
 

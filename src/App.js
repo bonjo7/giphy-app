@@ -1,5 +1,5 @@
 import Header from "./components/Header/Header";
-import List from "./components/List/GifList";
+import Search from "./components/SearchBox/SearchBox";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -8,7 +8,7 @@ function App() {
     <div className='main'>
       <Header />
       <div className='wrapper'>
-        <List />
+        <Search />
       </div>
     </div>
   );

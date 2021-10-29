@@ -1,3 +1,11 @@
 .button {
-    background-image: linear-gradient(to right, red , yellow);
+  background-image: linear-gradient(to right, red, yellow);
+}
+
+.clearSearch {
+  background-color: #fff !important;
+}
+
+.error {
+  border: 2px solid red !important;
 }
