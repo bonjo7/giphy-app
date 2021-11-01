@@ -1,0 +1,16 @@
+.modal {
+  background-color: #cccc00;
+}
+
+.modalBody {
+  background-color: #999999;
+}
+
+.buttonCopy {
+  background-image: linear-gradient(to right, red, yellow);
+}
+
+.buttonCopied {
+  background-image: linear-gradient(to right, #008000, #006400);
+  color: #fff !important;
+}
