@@ -16,3 +16,12 @@
 .centre {
   text-align: center;
 }
+
+.shareButton {
+  color: #fff !important;
+}
+
+.shareButton:focus,
+.shareButton:hover {
+  color: #737373 !important;
+}

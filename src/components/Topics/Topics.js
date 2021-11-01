@@ -24,12 +24,13 @@ const Topics = ({ searchGifs }) => {
   return (
     <>
       <Row>
-        {categories.map((item) => {
+        {categories.map((item, key) => {
+          const buttonAriaLable = `${item.category}-button`
           return (
-            <Col style={{textAlign: "center"}}>
+            <Col style={{textAlign: "center"}} key={key}>
               <Button
-                aria-label="category-button"
-                id={`button-${item.key}`}
+                aria-label={buttonAriaLable}
+                id={buttonAriaLable}
                 variant='outline-info'
                 key={item.id}
                 onClick={() => searchGifs(item.category)}

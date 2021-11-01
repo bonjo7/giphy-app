@@ -8,7 +8,7 @@ From the home page the user may use the search bar in order to search for other 
 
 Once a user finds a gif that they like, they can click the `embed` button or the `share` button where a modal will display allowing the user to copy the embed source code or the giphy URL to share the gif.
 
-## Perquisites
+## Prerequisites
 
 In order to run this application you will need the following
 
@@ -21,7 +21,7 @@ In order to run this application you will need the following
   - Click `Create an App`
   - Sign Up and Login
   - Click `Create App` once signed in
-  - Select `AIP -> Next Step`
+  - Select `API -> Next Step`
   - Enter App Name e.g. `My First Giphy App`
   - Accept terms and conditions
   - Click create app

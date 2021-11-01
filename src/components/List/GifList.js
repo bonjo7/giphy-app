@@ -29,7 +29,7 @@ const GifList = ({ gifs, loading }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <Container id='landing-page' style={{marginBottom: "50px"}}>
+        <Container id='landing-page' style={{ marginBottom: "50px" }}>
           <Row>
             {gifs?.map((gif, key) => {
               const altTag = `${gif.title}-gif`;
@@ -46,26 +46,32 @@ const GifList = ({ gifs, loading }) => {
                       <Card.Text className={styles.cardText}>
                         {gif.title.split("by")[0]}
                       </Card.Text>
-                      <div className={styles.centre}>
-                        <Button
-                          id="embed-button"
-                          aria-label='embed-button'
-                          variant='flat'
-                          style={{ color: "#fff" }}
-                          onClick={() => handleShow(gif.embed_url)}
-                        >
-                          <CodeSimple size={20} /> Embed
-                        </Button>
-                        <Button
-                          id="share-button"
-                          aria-label='share-button'
-                          variant='flat'
-                          style={{ color: "#fff" }}
-                          onClick={() => shareGif(gif.url)}
-                        >
-                          <Share size={20} /> Share
-                        </Button>
-                      </div>
+                      <Row>
+                        <Col style={{ textAlign: "center" }}>
+                          {" "}
+                          <Button
+                            id='embed-button'
+                            aria-label='embed-button-share'
+                            variant='outline-light'
+                            className={styles.shareButton}
+                            onClick={() => handleShow(gif.embed_url)}
+                          >
+                            <CodeSimple size={20} /> Embed
+                          </Button>
+                        </Col>
+                        <Col style={{ textAlign: "center" }}>
+                          {" "}
+                          <Button
+                            id='share-button'
+                            aria-label='share-button-share'
+                            variant='outline-light'
+                            className={styles.shareButton}
+                            onClick={() => shareGif(gif.url)}
+                          >
+                            <Share size={20}  /> Share
+                          </Button>
+                        </Col>
+                      </Row>
                     </Card.Body>
                   </Card>
                 </Col>
