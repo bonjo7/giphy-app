@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 import Search from "./components/SearchBox/SearchBox";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -15,6 +16,7 @@ function App() {
             <Route exact path='/' component={Search} />
           </Switch>
         </div>
+        <Footer />
       </div>
     </Router>
   );

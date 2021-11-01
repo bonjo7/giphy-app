@@ -29,7 +29,7 @@ const GifList = ({ gifs, loading }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <Container id='landing-page'>
+        <Container id='landing-page' style={{marginBottom: "50px"}}>
           <Row>
             {gifs?.map((gif, key) => {
               const altTag = `${gif.title}-gif`;
