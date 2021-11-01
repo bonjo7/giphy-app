@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Container, InputGroup, FormControl, Button } from "react-bootstrap";
 import UseRoutes from "../../Hooks/RoutesHook";
+import Toast from "../Toast/Toast";
 import GifList from "../List/GifList";
 import { MagnifyingGlass, XCircle } from "phosphor-react";
 import styles from "./Searchbox.module.css";
@@ -15,6 +16,9 @@ const SearchBox = () => {
     gifs,
     getGifsData,
     error,
+    show,
+    setShow,
+    errorStatus,
   } = UseRoutes();
 
   const onChange = (e) => {
@@ -34,10 +38,22 @@ const SearchBox = () => {
   return (
     <>
       <Container>
+        {error && (
+          <Toast
+            error={error}
+            errorStatus={errorStatus}
+            show={show}
+            setShow={setShow}
+          />
+        )}
         <div style={{ marginTop: "15px" }}>
           <InputGroup className='mb-3'>
             <FormControl
-              className={error ? styles.error : ""}
+              className={
+                error && errorStatus === "Please enter search value"
+                  ? styles.error
+                  : ""
+              }
               name='giphyName'
               type='text'
               placeholder='Giphy Name'

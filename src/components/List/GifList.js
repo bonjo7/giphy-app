@@ -1,22 +1,30 @@
 import React, { useState } from "react";
 import { Container, Card, Row, Col, Button } from "react-bootstrap";
 import GifModal from "../Modal/GifModal";
-import { Share } from "phosphor-react";
+import { CodeSimple, Share } from "phosphor-react";
 import styles from "./Giflist.module.css";
 import Spinner from "../Spinner/Spinner";
 
 const GifList = ({ gifs, loading }) => {
   const [show, setShow] = useState(false);
+  const [share, setShare] = useState(false);
   const [gif, setGif] = useState();
   const handleClose = () => setShow(false);
 
   const handleShow = (gifEmbed_URL) => {
     setShow(true);
+    setShare(false);
     setGif(gifEmbed_URL);
+  };
+
+  const shareGif = (gifURL) => {
+    setShare(true);
+    setShow(true);
+    setGif(gifURL);
   };
   return (
     <>
-      <GifModal handleClose={handleClose} show={show} gif={gif} />
+      <GifModal handleClose={handleClose} show={show} gif={gif} share={share} />
 
       {loading ? (
         <Spinner />
@@ -38,12 +46,24 @@ const GifList = ({ gifs, loading }) => {
                       <Card.Text className={styles.cardText}>
                         {gif.title.split("by")[0]}
                       </Card.Text>
-                      <Button
-                        aria-label='embed-button'
-                        onClick={() => handleShow(gif.embed_url)}
-                      >
-                        <Share size={20} />
-                      </Button>
+                      <div className={styles.centre}>
+                        <Button
+                          aria-label='embed-button'
+                          variant='flat'
+                          style={{ color: "#fff" }}
+                          onClick={() => handleShow(gif.embed_url)}
+                        >
+                          <CodeSimple size={20} /> Embed
+                        </Button>
+                        <Button
+                          aria-label='share-button'
+                          variant='flat'
+                          style={{ color: "#fff" }}
+                          onClick={() => shareGif(gif.url)}
+                        >
+                          <Share size={20} /> Share
+                        </Button>
+                      </div>
                     </Card.Body>
                   </Card>
                 </Col>

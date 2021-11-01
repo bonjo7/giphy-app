@@ -8,9 +8,11 @@ const UseRoutes = () => {
   const [gifs, setGifs] = useState([]);
   const [searchItem, setSearchItem] = useState(false);
   const [error, setError] = useState(null);
+  const [errorStatus, setErrorStatus] = useState(null);
+  const [show, setShow] = useState(false);
 
   const getGifsData = async () => {
-    setError(false)
+    setError(false);
     setLoading(true);
     try {
       await axios
@@ -20,14 +22,18 @@ const UseRoutes = () => {
           setSearchItem();
           setLoading(false);
         });
-    } catch (error) {
-      console.log("Error getting gifs - ", error);
+    } catch (err) {
+      setShow(true);
+      setErrorStatus(`${err.response.status} error`);
+      setError(true);
+      setLoading(false);
     }
   };
 
   const searchGifs = async (searchItem) => {
     if (searchItem !== undefined) {
-      setError(false)
+      setError(false);
+
       setLoading(true);
       try {
         await axios
@@ -38,11 +44,17 @@ const UseRoutes = () => {
             setGifs(res.data.data);
             setLoading(false);
           });
-      } catch (error) {
-        console.log("Error getting gifs - ", error);
+      } catch (err) {
+        setError(true);
+        setShow(true);
+        setErrorStatus(`${err.response.status} error`);
+        setLoading(false);
       }
-    }else{
-      setError(true)
+    } else {
+      setShow(true);
+      setError(true);
+      setErrorStatus("Please enter a search value");
+      setLoading(false);
     }
   };
 
@@ -54,7 +66,10 @@ const UseRoutes = () => {
     searchGifs,
     searchItem,
     setSearchItem,
-    error
+    error,
+    errorStatus,
+    show,
+    setShow,
   };
 };
 
