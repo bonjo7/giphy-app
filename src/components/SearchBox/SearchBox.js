@@ -44,11 +44,14 @@ const SearchBox = () => {
               aria-label='Giphy name'
               ref={ref}
               onChange={(e) => onChange(e)}
-              onKeyDown={(e) => e.key === 'Enter' ? searchGifs(searchItem) : ""}
+              onKeyDown={(e) =>
+                e.key === "Enter" ? searchGifs(searchItem) : ""
+              }
             />
             {searchItem ? (
               <Button
-                id="clearSearch"
+                aria-label='search-gif-button'
+                id='clearSearch'
                 className={styles.clearSearch}
                 variant='flat'
                 onClick={() => clearSearch()}
@@ -60,7 +63,8 @@ const SearchBox = () => {
             )}
 
             <Button
-            id="searchButton"
+              aria-label='close-search-button'
+              id='searchButton'
               className={styles.button}
               variant='flat'
               onClick={() => searchGifs(searchItem)}

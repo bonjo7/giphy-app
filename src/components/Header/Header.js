@@ -1,4 +1,4 @@
-import React from "react"; 
+import React from "react";
 import { HashLink as Link } from "react-router-hash-link";
 import { Navbar, Container } from "react-bootstrap";
 import GiphyLogo from "../../Images/giphy.png";
@@ -8,14 +8,14 @@ const Header = () => {
   return (
     <>
       <Navbar className={styles.navBar}>
-      <Link className={styles.skipLink} to='#landing-page'>
-            {" "}
-            Skip to main content{" "}
-          </Link>
+        <Link className={styles.skipLink} to='#landing-page'>
+          {" "}
+          Skip to main content{" "}
+        </Link>
         <Container>
           <Navbar.Brand className={styles.brand}>
             <img
-              alt=''
+              alt='giphy-logo'
               src={GiphyLogo}
               width='25'
               height='30'
