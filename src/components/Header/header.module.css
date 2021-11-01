@@ -5,5 +5,21 @@
 }
 
 .brand {
-  color: white !important;
+  color: #fff !important;
+}
+
+.skipLink {
+  background: #000;
+  height: 30px;
+  left: 40%;
+  padding: 8px;
+  position: absolute;
+  transform: translateY(-150%);
+  transition: transform 0.3s;
+  color: #fff;
+}
+
+.skipLink:focus {
+  transform: translateY(0%);
+  z-index:99
 }

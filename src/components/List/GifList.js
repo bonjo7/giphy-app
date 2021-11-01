@@ -10,7 +10,7 @@ const GifList = ({ gifs, loading }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <Container>
+        <Container id="landing-page">
           <Row>
             {gifs?.map((gif, key) => {
               return (

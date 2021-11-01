@@ -5,7 +5,7 @@ describe('Input', () => {
     })
   
     it('it focuses the input', () => {
-      cy.focused().should('have.class', 'form-control')
+      cy.get('.form-control').first().focus()
     })
 
     it('accepts input', () => {

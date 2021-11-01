@@ -37,7 +37,6 @@ const SearchBox = () => {
         <div style={{ marginTop: "15px" }}>
           <InputGroup className='mb-3'>
             <FormControl
-              autoFocus
               className={error ? styles.error : ""}
               name='giphyName'
               type='text'
