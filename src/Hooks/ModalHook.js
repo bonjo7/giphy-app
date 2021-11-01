@@ -9,7 +9,11 @@ const UseModal = () => {
   };
 
   const onClickCopy = (value) => {
-    navigator.clipboard.writeText(value);
+    if (navigator.clipboard !== undefined) {
+      navigator.clipboard.writeText(value);
+    } else if (window.clipboardData) {
+      window.clipboardData.setData("Text", value);
+    }
     setCopy(true);
     setTimeout(() => {
       setCopy(false);
