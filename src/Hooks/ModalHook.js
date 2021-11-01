@@ -9,7 +9,19 @@ const UseModal = () => {
   };
 
   const onClickCopy = (value) => {
-    navigator.clipboard.writeText(value);
+    if (navigator.clipboard !== undefined) {
+      navigator.clipboard.writeText(value).then(
+        function () {
+          console.log("Async: Copying to clipboard was successful!");
+        },
+        function (err) {
+          console.error("Async: Could not copy text: ", err);
+        }
+      );
+    } else if (window.clipboardData) {
+      window.clipboardData.setData("Text", value);
+    }
+
     setCopy(true);
     setTimeout(() => {
       setCopy(false);
