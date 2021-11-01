@@ -48,6 +48,7 @@ const GifList = ({ gifs, loading }) => {
                       </Card.Text>
                       <div className={styles.centre}>
                         <Button
+                          id="embed-button"
                           aria-label='embed-button'
                           variant='flat'
                           style={{ color: "#fff" }}
@@ -56,6 +57,7 @@ const GifList = ({ gifs, loading }) => {
                           <CodeSimple size={20} /> Embed
                         </Button>
                         <Button
+                          id="share-button"
                           aria-label='share-button'
                           variant='flat'
                           style={{ color: "#fff" }}

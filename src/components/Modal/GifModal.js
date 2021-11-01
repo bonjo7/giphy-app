@@ -27,12 +27,13 @@ const GifModal = ({ show, handleClose, gif, share }) => {
   return (
     <>
       <Modal
+        id="share-modal"
         show={show}
         onHide={handleClose}
         aria-labelledby='contained-modal-title-vcenter'
         centered
       >
-        <Modal.Header closeButton className={styles.modal}>
+        <Modal.Header closeButton id="close-button" className={styles.modal}>
           <Modal.Title style={{ color: "#1d44b8" }}>
             {" "}
             {share ? "Share GIF" : "Embed GIF"}
@@ -68,7 +69,7 @@ const GifModal = ({ show, handleClose, gif, share }) => {
             />
 
             <Button
-              aria-label='copy-embed-url-button'
+              aria-label='copybutton'
               variant='flat'
               onClick={(e) =>
                 onClickCopy(document.getElementById("IframeLink").value)
