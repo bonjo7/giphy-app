@@ -1,10 +1,11 @@
 import React from "react";
 import { Modal, Button, InputGroup, FormControl, Form } from "react-bootstrap";
 import UseModal from "../../Hooks/ModalHook";
+import Toast from "../Toast/Toast";
 import styles from "./GifModal.module.css";
 
 const GifModal = ({ show, handleClose, gif, share }) => {
-  const { copy, responsive, onSwitchAction, onClickCopy } = UseModal();
+  const { copy, responsive, onSwitchAction, onClickCopy, error, errorStatus, showToast,  setShow  } = UseModal();
 
   const gifURL = gif;
   const IFrame = `<iframe src="${gif}"width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="${gif}">via GIPHY</a></p>`;
@@ -26,6 +27,14 @@ const GifModal = ({ show, handleClose, gif, share }) => {
   };
   return (
     <>
+     {error && (
+          <Toast
+            error={error}
+            errorStatus={errorStatus}
+            show={show}
+            setShow={showToast}
+          />
+        )}
       <Modal
         id="share-modal"
         show={show}
