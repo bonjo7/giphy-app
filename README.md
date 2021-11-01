@@ -53,5 +53,3 @@ Cypress View
   - `useshare.spec.js`
 
 [giphyApp]: ./src/Images/GiphyApp.png
-
-src/Images/GiphyApp.png
