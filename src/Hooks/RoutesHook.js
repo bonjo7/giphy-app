@@ -31,17 +31,14 @@ const UseRoutes = () => {
   };
 
   const searchGifs = async (searchItem) => {
-    if (
-      searchItem !== undefined &&
-      searchItem.giphyName !== ""
-    ) {
+    if (searchItem !== undefined && searchItem.giphyName !== "") {
       setError(false);
       setLoading(true);
       setErrorStatus(null);
       try {
         await axios
           .get(
-            `${baseURL}search?api_key=${API_KEY}&q=${searchItem.giphyName}&rating=g&lang=en`
+            `${baseURL}search?api_key=${API_KEY}&q=${searchItem.giphyName ? searchItem.giphyName : searchItem}&rating=g&lang=en`
           )
           .then((res) => {
             setGifs(res.data.data);

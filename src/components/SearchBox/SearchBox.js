@@ -3,6 +3,7 @@ import { Container, InputGroup, FormControl, Button } from "react-bootstrap";
 import UseRoutes from "../../Hooks/RoutesHook";
 import Toast from "../Toast/Toast";
 import GifList from "../List/GifList";
+import Topics from "../Topics/Topics";
 import { MagnifyingGlass, XCircle } from "phosphor-react";
 import styles from "./Searchbox.module.css";
 
@@ -89,6 +90,9 @@ const SearchBox = () => {
             </Button>
           </InputGroup>
         </div>
+      </Container>
+      <Container>
+        <Topics searchGifs={searchGifs} />
       </Container>
       <GifList loading={loading} gifs={gifs} getGifsData={getGifsData} />
     </>
