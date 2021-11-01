@@ -17,11 +17,12 @@
   text-align: center;
 }
 
-.shareButton {
+.shareButton,
+.shareButton:focus {
   color: #fff !important;
 }
 
-.shareButton:focus,
+
 .shareButton:hover {
   color: #737373 !important;
 }
