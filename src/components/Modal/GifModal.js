@@ -1,18 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Modal, Button, InputGroup, FormControl, Form } from "react-bootstrap";
+import UseModal from "../../Hooks/ModalHook";
 import styles from "./GifModal.module.css";
 
 const GifModal = ({ show, handleClose, gif, share }) => {
-  const [copy, setCopy] = useState(false);
-  const [responsive, setResponsive] = useState(false);
+  const { copy, responsive, onSwitchAction, onClickCopy } = UseModal();
 
   const gifURL = gif;
   const IFrame = `<iframe src="${gif}"width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="${gif}">via GIPHY</a></p>`;
   const responsiveIFrame = `<div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="${gif}" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="${gif}">via GIPHY</a></p>`;
-
-  const onSwitchAction = () => {
-    setResponsive(!responsive);
-  };
 
   const modalValue = () => {
     let value;
@@ -27,14 +23,6 @@ const GifModal = ({ show, handleClose, gif, share }) => {
     }
 
     return value;
-  };
-
-  const onClickCopy = (value) => {
-    navigator.clipboard.writeText(value);
-    setCopy(true);
-    setTimeout(() => {
-      setCopy(false);
-    }, 3000);
   };
   return (
     <>

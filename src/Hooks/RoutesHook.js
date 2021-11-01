@@ -31,10 +31,13 @@ const UseRoutes = () => {
   };
 
   const searchGifs = async (searchItem) => {
-    if (searchItem !== undefined) {
+    if (
+      searchItem !== undefined &&
+      searchItem.giphyName !== ""
+    ) {
       setError(false);
-
       setLoading(true);
+      setErrorStatus(null);
       try {
         await axios
           .get(

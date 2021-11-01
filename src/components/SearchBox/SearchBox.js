@@ -50,7 +50,7 @@ const SearchBox = () => {
           <InputGroup className='mb-3'>
             <FormControl
               className={
-                error && errorStatus === "Please enter search value"
+                error && errorStatus === "Please enter a search value"
                   ? styles.error
                   : ""
               }
