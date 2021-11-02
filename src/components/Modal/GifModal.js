@@ -35,7 +35,6 @@ const GifModal = ({ show, handleClose, gif, share }) => {
       >
         <Modal.Header closeButton id="close-button" className={styles.modal}>
           <Modal.Title style={{ color: "#1d44b8" }}>
-            {" "}
             {share ? "Share GIF" : "Embed GIF"}
           </Modal.Title>
         </Modal.Header>

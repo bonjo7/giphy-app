@@ -14,7 +14,6 @@ const SearchBox = () => {
     searchGifs,
     searchItem,
     setSearchItem,
-    gifs,
     getGifsData,
     error,
     show,
@@ -94,7 +93,7 @@ const SearchBox = () => {
       <Container>
         <Topics searchGifs={searchGifs} />
       </Container>
-      <GifList loading={loading} gifs={gifs} getGifsData={getGifsData} />
+      <GifList loading={loading} getGifsData={getGifsData} />
     </>
   );
 };

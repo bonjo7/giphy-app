@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { Container, Card, Row, Col, Button } from "react-bootstrap";
 import GifModal from "../Modal/GifModal";
 import { CodeSimple, Share } from "phosphor-react";
+import useStore from "../../Store/SharedStore";
 import styles from "./Giflist.module.css";
 import Spinner from "../Spinner/Spinner";
 
-const GifList = ({ gifs, loading }) => {
+const GifList = ({ loading }) => {
   const [show, setShow] = useState(false);
   const [share, setShare] = useState(false);
   const [gif, setGif] = useState();
   const handleClose = () => setShow(false);
+
+  const hasGifs = useStore((state) => state.gifs);
 
   const handleShow = (gifEmbed_URL) => {
     setShow(true);
@@ -31,7 +34,7 @@ const GifList = ({ gifs, loading }) => {
       ) : (
         <Container id='landing-page' style={{ marginBottom: "50px" }}>
           <Row>
-            {gifs?.map((gif, key) => {
+            {hasGifs?.map((gif, key) => {
               const altTag = `${gif.title}-gif`;
               return (
                 <Col sm={4}>
@@ -48,7 +51,6 @@ const GifList = ({ gifs, loading }) => {
                       </Card.Text>
                       <Row>
                         <Col style={{ textAlign: "center" }}>
-                          {" "}
                           <Button
                             id='embed-button'
                             aria-label='embed-button-share'
@@ -60,7 +62,6 @@ const GifList = ({ gifs, loading }) => {
                           </Button>
                         </Col>
                         <Col style={{ textAlign: "center" }}>
-                          {" "}
                           <Button
                             id='share-button'
                             aria-label='share-button-share'

@@ -1,11 +1,12 @@
 import { useState } from "react";
+import useGifStore from "../Store/SharedStore";
 import axios from "axios";
 
 const UseRoutes = () => {
   const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
   const baseURL = `https://api.giphy.com/v1/gifs/`;
   const [loading, setLoading] = useState(false);
-  const [gifs, setGifs] = useState([]);
+  const setGifsList = useGifStore((state) => state.setGifs);
   const [searchItem, setSearchItem] = useState(false);
   const [error, setError] = useState(null);
   const [errorStatus, setErrorStatus] = useState(null);
@@ -16,11 +17,18 @@ const UseRoutes = () => {
     setLoading(true);
     try {
       await axios
-        .get(`${baseURL}trending?api_key=${API_KEY}&rating=g`)
+        .get(`${baseURL}trending?api_key=${API_KEY}&limit=27&rating=g`)
         .then((res) => {
-          setGifs(res.data.data);
-          setSearchItem();
-          setLoading(false);
+          if (res.data.data.length > 0) {
+            setGifsList(res.data.data);
+            setSearchItem();
+            setLoading(false);
+          } else {
+            setShow(true);
+            setErrorStatus(`Issue getting trending gifs`);
+            setError(true);
+            setLoading(false);
+          }
         });
     } catch (err) {
       setShow(true);
@@ -38,10 +46,12 @@ const UseRoutes = () => {
       try {
         await axios
           .get(
-            `${baseURL}search?api_key=${API_KEY}&q=${searchItem.giphyName ? searchItem.giphyName : searchItem}&rating=g&lang=en`
+            `${baseURL}search?api_key=${API_KEY}&q=${
+              searchItem.giphyName ? searchItem.giphyName : searchItem
+            }&rating=g&lang=en`
           )
           .then((res) => {
-            setGifs(res.data.data);
+            setGifsList(res.data.data);
             setLoading(false);
           });
       } catch (err) {
@@ -61,7 +71,6 @@ const UseRoutes = () => {
   return {
     loading,
     setLoading,
-    gifs,
     getGifsData,
     searchGifs,
     searchItem,
