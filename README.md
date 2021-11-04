@@ -28,9 +28,22 @@ In order to run this application you will need the following
   - Your giphy API should be made available to you now.
 
 ## Build Steps
+You have two options to run this application, either via docker or locally, steps for both processes are below
+### Build and run via docker
+#### Docker Prerequisites
+- Docker is required [Get Docker](https://docs.docker.com/get-docker/)
+- Once docker is installed
+  - Clone project `git clone git@github.com:bonjo7/giphy-app.git`
+  - Change directory to the `giphy-app` directory
+    - `cd giphy-app`
+  - From the route directory run the following command `docker build -t giphy-app .` This command will use the dockerfile to build the container image
+  - Once complete, run `docker images` and you should see the container image `giphy-app` avalibale
+  - Too run the container image run `docker run --name giphy-app -p 3000:3000 -e REACT_APP_GIPHY_API_KEY=<YOUR_GIPHY_API_KEY> giphy-app:latest` this command will run the container from the `giphy-app:latest` image called `giphy-app` assigning the port to `3000` and assiging the envoirnment variable `REACT_APP_GIPHY_API_KEY`
+  - The app should now be running on port 3000 `http://localhost:3000`
 
+### Build and run locally
 - Clone project `git clone git@github.com:bonjo7/giphy-app.git`
-- Change directory for the `giphy-app` directory
+- Change directory to the `giphy-app` directory
   - `cd giphy-app`
 - Install dependencies `npm install`
 - Create a file in the root directory called `.env`
