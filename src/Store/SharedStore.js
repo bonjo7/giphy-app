@@ -6,7 +6,6 @@ const useSharedStore = create(
     gifs: [],
     setGifs: (gifs) => set({ gifs }),
   })),
-  "iperform-shared"
 );
 
 export default useSharedStore;

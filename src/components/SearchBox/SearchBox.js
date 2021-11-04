@@ -33,6 +33,7 @@ const SearchBox = () => {
 
   useEffect(() => {
     getGifsData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
