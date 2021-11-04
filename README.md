@@ -53,13 +53,12 @@ You have two options to run this application, either via docker or locally, step
 - App should not be running on port 3000 `http://localhost:3000`
 
 ## Testing
+In order to complete the tests follow the `Build and run locally` steps above prior to running the below test commands.
 
-Command Line
-
+### Command Line
 - To test the application without the cypress UI run the following command from the app route directory `npm run cy:run -- "cypress/integration/usersearch-spec.js"`
 
-Cypress View
-
+### Cypress View
 - To test the application using the cypress UI run the following command from the app route directory `npm run cypress`
 - From the cypress UI click `Tests` and select the desired testing file
   - `usersearch.spec.js`
