@@ -40,7 +40,11 @@ You have two options to run this application, either via docker or locally, step
   - Once complete, run `docker images` and you should see the container image `giphy-app` avalibale
   - Too run the container image run 
   ```
-  docker run --name giphy-app -p 3000:3000 -e REACT_APP_GIPHY_API_KEY=<YOUR_GIPHY_API_KEY> giphy-app:latest
+  docker run  \
+  --name giphy-app \
+  -p 3000:3000 \
+  -e REACT_APP_GIPHY_API_KEY=<YOUR_GIPHY_API_KEY> \
+  giphy-app:latest
   ``` 
   this command will run the container from the `giphy-app:latest` image called `giphy-app` assigning the port to `3000` and assiging the envoirnment variable `REACT_APP_GIPHY_API_KEY`
   - The app should now be running on port 3000 `http://localhost:3000`
